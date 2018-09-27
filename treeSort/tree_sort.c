@@ -1,6 +1,7 @@
 #include "tree_sort.h"
 
-struct Node * insert (struct Node * node, int key){
+struct Node * insert (struct Node * node, int key)
+{
     /* If the tree is empty, return a new Node */
     if (node == NULL) return newNode(key);
     /* Otherwise, recur down the tree */
