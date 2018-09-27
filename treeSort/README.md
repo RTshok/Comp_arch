@@ -7,7 +7,6 @@
  - Use 'sudo pacman -Sy gnuplot' (if you don't have gnuplot installed) for Arch Linux.
  - Or 'sudo apt-get gnuplot' for Ubuntu
  Then open terminal, use Makefile to compile.
- Commands for Makefile:
  - make compile -> compiles with different flags
  - make run -> starts the sorting
  - make draw -> outputs the plots(gnuplot is needed)
