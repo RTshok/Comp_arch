@@ -23,8 +23,7 @@ struct Node * newNode(int item)
 
 void inorder ( struct Node * root, int **array)
 { /* Traverses the bst in inorder way */
-    if ( root != NULL )
-    {
+    if ( root != NULL ){
         inorder ( root -> left, array) ;
         **array = root -> key ;
         ++*array;
@@ -38,7 +37,7 @@ int * tree_sort(int* arr,int amount)
  
     // Construct the BST
     root = insert(root, arr[0]);
-    for (int i=1; i<amount; i++)
+    for (int i = 1; i < amount; i++)
         insert(root, arr[i]);
  
     // Store inorder traversal of the BST
