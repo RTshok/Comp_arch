@@ -1,5 +1,6 @@
 #include "tree_sort.h"
-
+/* Used information from https://www.geeksforgeeks.org/tree-sort/  */
+/*  */
 struct Node * insert (struct Node * node, int key)
 {
     /* If the tree is empty, return a new Node */
