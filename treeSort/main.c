@@ -53,9 +53,9 @@ int main(int argc, char *argv[])
 	double whole_sort_time = 0;	
 for (int i=0; i < amount;i++)
 {		
-	items[i] = (i*i*i*amount+amount)*3;//generating the size of future array;
+	items[i] = (i*i*i*amount+amount)*3;//generating the size of future array (awful)
 	/* Fill array with random numbers */
-	array = malloc(items[i]*sizeof(*array));
+	array = malloc(items[i] * sizeof(*array));
 	if (array == NULL) goto exc_malloc;
 	unsigned int cnt;
 	for (cnt = 0; cnt < items[i]; cnt++)
