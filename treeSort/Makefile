@@ -5,7 +5,6 @@ DEPS:=$(addsuffix .o, $(DEPS))
 
 CC=gcc
 FLAGS = Os O0 O1 O2 O3
-CMDSEP = &
 ARRAYS = 27
 
 .PHONY: compile clean run draw help
