@@ -2,19 +2,18 @@ TARGET =main
 DEPS =tree_sort
 DEPS:=$(addsuffix .o, $(DEPS))
 
+
 CC=gcc
+FLAGS = Os O0 O1 O2 O3
+CMDSEP = &
 ARRAYS = 27
 
 .PHONY: compile clean run draw help
 
-compile:	$(TARGET)
+compile:$(TARGET)
 
 $(TARGET):$(DEPS)
-	$(CC) -Os $(addsuffix .c,$(TARGET)) $(DEPS) -o Os 
-	$(CC) -O0 $(addsuffix .c,$(TARGET)) $(DEPS) -o O0 
-	$(CC) -O1 $(addsuffix .c,$(TARGET)) $(DEPS) -o O1 
-	$(CC) -O2 $(addsuffix .c,$(TARGET)) $(DEPS) -o O2 
-	$(CC) -O3 $(addsuffix .c,$(TARGET)) $(DEPS) -o O3 
+	$(foreach var,$(FLAGS),$(CC) -$(var) $(addsuffix .c,$(TARGET)) $(DEPS) -o $(var) ;) # compiling with different flags
 %.o: %.c		
 	$(CC) $(CFLAGS) -c $< 	 
 clean:
@@ -22,20 +21,13 @@ clean:
 	rm -f $(TARGET)
 	-rm -f $(DEPS)
 	-rm -f *.o $(TARGET)
-	-rm -f Os
-	-rm -f O0
-	-rm -f O1
-	-rm -f O2
-	-rm -f O3
-
+	$(foreach var,$(FLAGS),rm -f $(var) ;) # deletes the .* o files.
+	$(foreach var,$(FLAGS),rm -f ./-$(var) ;) # deletes the output data files.
 run:
-	./Os -Os $(ARRAYS)
-	./O0 -O0 $(ARRAYS)
-	./O1 -O1 $(ARRAYS)
-	./O2 -O2 $(ARRAYS)
-	./O3 -O3 $(ARRAYS)
+	$(foreach var,$(FLAGS),./$(var) -$(var) $(ARRAYS) ;) 
+	
 draw:
-	gnuplot gnuplot.sh
+	gnuplot gnuplot.sh # draws the curves
 	
 help:
 	@echo "Usage : "
